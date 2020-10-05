@@ -28,5 +28,11 @@ public class UserServiceImpl implements UserService {
 		return dao.addUser(user);
 	}
 
+	@Override
+	public List<User> getUsersByGroup(int group) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
