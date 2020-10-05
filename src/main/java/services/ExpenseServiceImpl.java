@@ -27,4 +27,14 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return dao.addExpense(expense);
 	}
 
+	@Override
+	public List<Expense> getUserExpenses(String user) {
+		return dao.getUserExpenses(user);
+	}
+
+	@Override
+	public List<Expense> getGroupExpenses(int group) {
+		return dao.getGroupExpenses(group);
+	}
+
 }

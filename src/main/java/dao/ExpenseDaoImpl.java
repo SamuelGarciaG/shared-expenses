@@ -26,4 +26,14 @@ public class ExpenseDaoImpl implements ExpenseDao {
 		return jpa.save(expense);
 	}
 
+	@Override
+	public List<Expense> getUserExpenses(String user) {
+		return jpa.findByusername(user);
+	}
+
+	@Override
+	public List<Expense> getGroupExpenses(int group) {
+		return jpa.findBygroup(group);
+	}
+
 }
