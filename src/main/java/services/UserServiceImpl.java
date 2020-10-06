@@ -29,9 +29,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUsersByGroup(int group) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getUsersByParty(int party) {
+		return dao.getUsersByParty(party);
 	}
 
 

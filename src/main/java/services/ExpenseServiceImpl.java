@@ -33,8 +33,8 @@ public class ExpenseServiceImpl implements ExpenseService {
 	}
 
 	@Override
-	public List<Expense> getGroupExpenses(int group) {
-		return dao.getGroupExpenses(group);
+	public List<Expense> getPartyExpenses(int party) {
+		return dao.getPartyExpenses(party);
 	}
 
 }

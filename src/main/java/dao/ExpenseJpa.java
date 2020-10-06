@@ -9,6 +9,6 @@ import model.Expense;
 public interface ExpenseJpa extends JpaRepository<Expense,Integer> {
 
 	List<Expense> findByusername(String name);
-	List<Expense> findBygroup(int group);
+	List<Expense> findByfidparty(int fidparty);
 
 }

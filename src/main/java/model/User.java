@@ -14,11 +14,11 @@ import lombok.Setter;
 @Table(name="users")
 @Getter @Setter @NoArgsConstructor
 public class User {
-	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int iduser;
 	private String name;
+	private int fidparty;
 
 }

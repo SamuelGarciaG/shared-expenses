@@ -10,5 +10,6 @@ public class UserDto {
 	private int iduser;
 	private String name;
 	private int balance;
+	private int fidparty;
 
 }

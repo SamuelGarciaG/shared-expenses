@@ -28,6 +28,6 @@ public class Expense {
     (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private Date date;
     private int cost;
-	private int group;
+	private int fidparty;
 
 }

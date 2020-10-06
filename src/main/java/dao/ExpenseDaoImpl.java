@@ -32,8 +32,8 @@ public class ExpenseDaoImpl implements ExpenseDao {
 	}
 
 	@Override
-	public List<Expense> getGroupExpenses(int group) {
-		return jpa.findBygroup(group);
+	public List<Expense> getPartyExpenses(int party) {
+		return jpa.findByfidparty(party);
 	}
 
 }

@@ -26,4 +26,9 @@ public class UserDaoImpl implements UserDao {
 		return jpa.save(user);
 	}
 
+	@Override
+	public List<User> getUsersByParty(int party) {
+		return jpa.findByfidparty(party);
+	}
+
 }

@@ -8,6 +8,6 @@ public interface UserService {
 	
 	public List<User> getUsers();
 	public User addUser(User user);
-	public List<User> getUsersByGroup(int group);
+	public List<User> getUsersByParty(int party);
 
 }
