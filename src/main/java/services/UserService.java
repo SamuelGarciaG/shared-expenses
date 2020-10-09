@@ -2,12 +2,12 @@ package services;
 
 import java.util.List;
 
-import model.User;
+import dto.UserDto;
 
 public interface UserService {
 	
-	public List<User> getUsers();
-	public User addUser(User user);
-	public List<User> getUsersByParty(int party);
+	public List<UserDto> getUsers();
+	public UserDto addUser(UserDto user);
+	public List<UserDto> getUsersByParty(int party);
 
 }

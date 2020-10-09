@@ -36,5 +36,5 @@ public class ExpenseServiceImpl implements ExpenseService {
 	public List<Expense> getPartyExpenses(int party) {
 		return dao.getPartyExpenses(party);
 	}
-
+	
 }

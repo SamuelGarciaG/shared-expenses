@@ -1,4 +1,4 @@
-package controller;
+package dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ public class UserDto {
 	
 	private int iduser;
 	private String name;
-	private int balance;
+	private float balance;
 	private int fidparty;
-
+	
 }

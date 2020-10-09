@@ -1,11 +1,14 @@
 package services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.UserDao;
+import dto.UserDto;
 import model.User;
 
 
@@ -13,25 +16,41 @@ import model.User;
 public class UserServiceImpl implements UserService {
 	
 	UserDao dao;
+	ModelMapper modelMapper;
 	
-	public UserServiceImpl(@Autowired UserDao dao) {
+	public UserServiceImpl(@Autowired UserDao dao, @Autowired ModelMapper modelMapper) {
 		this.dao=dao;
+		this.modelMapper=modelMapper;
 	}
 
 	@Override
-	public List<User> getUsers() {
-		return dao.getUsers();
+	public List<UserDto> getUsers() {
+        List<User> users = dao.getUsers();
+        List<UserDto> usersDto = users.stream().map(this::convertToDto).collect(Collectors.toList());
+		return usersDto;
 	}
 
 	@Override
-	public User addUser(User user) {
-		return dao.addUser(user);
+	public UserDto addUser(UserDto userDto) {
+		User user = dao.addUser(convertToEntity(userDto));
+		return convertToDto(user);
 	}
 
 	@Override
-	public List<User> getUsersByParty(int party) {
-		return dao.getUsersByParty(party);
+	public List<UserDto> getUsersByParty(int party) {
+		List<User> users = dao.getUsersByParty(party);
+		List<UserDto> usersDto = users.stream().map(this::convertToDto).collect(Collectors.toList());
+		return usersDto;
 	}
 
+	private UserDto convertToDto(User user) {
+	    UserDto userDto = modelMapper.map(user, UserDto.class);
+	    return userDto;
+	}
+
+	private User convertToEntity(UserDto userDto) {
+	    User user = modelMapper.map(userDto, User.class);
+	    return user;
+	}
 
 }
