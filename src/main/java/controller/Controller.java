@@ -37,7 +37,7 @@ public class Controller {
 	}
 
 	@GetMapping (value ="partys/{idParty}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Party getPartyById(@PathVariable("idParty") int party) {
+	public Party getPartyById(@PathVariable("idParty") int party) throws Exception {
 		return partyService.getPartyById(party);
 	}
 
@@ -45,7 +45,7 @@ public class Controller {
 	public List<UserDto> getPartyUserBalanceById(@PathVariable("idParty") int party) {
 		return partyService.getPartyBalance(party);
 	}
-	
+
 	@GetMapping (value ="partys/{idParty}/expenses", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Expense> getPartyExpensesById(@PathVariable("idParty") int party) {
 		return expenseService.getPartyExpenses(party);

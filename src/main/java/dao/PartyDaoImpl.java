@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,8 +28,8 @@ public class PartyDaoImpl implements PartyDao{
 	}
 
 	@Override
-	public Party getPartyById(int party) {
-		return jpa.getOne(party);
+	public Optional<Party> getPartyById(int party) {
+		return jpa.findById(party);
 	}
 
 }

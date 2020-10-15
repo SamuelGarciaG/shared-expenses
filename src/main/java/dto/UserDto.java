@@ -9,7 +9,7 @@ public class UserDto {
 	
 	private int iduser;
 	private String name;
-	private float balance;
+	private double balance;
 	private int fidparty;
 	
 }

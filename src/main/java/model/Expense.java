@@ -27,7 +27,7 @@ public class Expense {
     @JsonFormat
     (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private Date date;
-    private int cost;
+    private double cost;
 	private int fidparty;
 
 }

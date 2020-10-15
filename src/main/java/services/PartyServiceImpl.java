@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,8 +44,14 @@ public class PartyServiceImpl implements PartyService {
 	}
 
 	@Override
-	public Party getPartyById(int party) {
-		return partyDao.getPartyById(party);
+	public Party getPartyById(int party) throws Exception {
+		Optional<Party> partyOptional = partyDao.getPartyById(party);
+		if(partyOptional.isPresent()){
+		    Party partyObject = partyOptional.get();
+		    return partyObject;
+		}else{
+		    throw new Exception();
+		}
 	}
 	
 	@Override
@@ -61,22 +68,14 @@ public class PartyServiceImpl implements PartyService {
 	}
 
 	private List<UserDto> calculatePartyBalance(List<UserDto> users, int party) {
-		int totalExpenses = 0;
-		int userBalance = 0;
+		double totalExpenses = 0;
+		double userBalance = 0;
+		List<Expense> userExpenses = new ArrayList<>();
 		List<Expense> expenses = expenseDao.getPartyExpenses(party);
-        for (Expense expense : expenses) {
-            totalExpenses+=expense.getCost();
-        }
+		totalExpenses = expenses.stream().mapToDouble(o -> o.getCost()).sum();
         for (UserDto user : users) {
-        	List<Expense> userExpenses = new ArrayList<>();
-            for (Expense expense : expenses) {
-                if (expense.getUsername().equals(user.getName())) {
-                	userExpenses.add(expense);
-                }
-            }
-            for (Expense expense : userExpenses) {
-            	userBalance+=expense.getCost();
-            }
+        	userExpenses.clear();
+            userBalance = expenses.stream().filter(e -> e.getUsername().equals(user.getName())).mapToDouble(o -> o.getCost()).sum();
         	user.setBalance(userBalance - (totalExpenses/users.size()));
         	userBalance=0;
         }
